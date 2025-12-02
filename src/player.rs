@@ -1,3 +1,7 @@
+use crate::races::Race;
+use crate::classes::Class;
+use crate::abilities::AbilityScores;
+use crate::spells::SpellSlots;
 
 pub struct Player {
     pub name: String,

@@ -1,11 +1,11 @@
-struct AbilityScores {
+pub struct AbilityScores {
     // DND 5E Ability Scores, range from 1 to 30
-    strength: i32,
-    dexterity: i32,
-    constitution: i32,
-    intelligence: i32,
-    wisdom: i32,
-    charisma: i32,
+    pub strength: i32,
+    pub dexterity: i32,
+    pub constitution: i32,
+    pub intelligence: i32,
+    pub wisdom: i32,
+    pub charisma: i32,
 }
 
 impl AbilityScores {

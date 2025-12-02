@@ -1,4 +1,4 @@
-use crate::player::AbilityScores;
+use crate::abilities::AbilityScores;
 
 pub enum Class {
     Fighter,

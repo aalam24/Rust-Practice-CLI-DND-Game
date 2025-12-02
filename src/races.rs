@@ -12,7 +12,7 @@ pub enum Race {
 
 impl Race {
     // Apply racial ability score increases
-    pub fn apply_racial_bonuses(&self, ability_scores: &mut AbilityScores) {
+    pub fn apply_racial_bonuses(&self, ability_scores: &mut AbilityScores, choices: (String, String)) {
         let (plus2, plus1) = choices;
 
         match plus2.as_str() {
@@ -63,5 +63,6 @@ impl Race {
             }
         };
         println!("You chose to increase {} by +2 and {} by +1", plus2, plus1);
+        (plus2, plus1)
     }
 }
