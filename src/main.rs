@@ -24,10 +24,12 @@ fn create_character() -> Player {
     let mut name = String::new();
     std::io::stdin().read_line(&mut name).expect("Failed to read line");
     let name = name.trim().to_string();
-    //2. Choose race
+    //2. Allocate ability scores
+    let ability_scores = crate::abilities::AbilityScores::point_buy();
+    //3. Choose race
     let race = loop {
         println!("Choose {}'s race:", name);
-        println!("1. Human, 2. Elf, 3. Dwarf, 4. Orc, 5. Tiefling, 6. Gnome");
+        println!("1. Human, 2. Elf, 3. Dwarf, 4. Orc, 5. Tiefling, 6. Gnome (Pick a number between 1-6)");
         let mut race_input = String::new();
         std::io::stdin().read_line(&mut race_input).expect("Failed to read line");
 
@@ -42,11 +44,13 @@ fn create_character() -> Player {
                 println!("Invalid choice, enter a number between 1 and 6.")
             }
         }
+        let asi = Race::choose_ability_score_increases();
+        Race::apply_racial_bonuses(&self, ability_scores, asi);
     };
-    //3. Choose class
-    let class = loop {
+    //4. Choose class
+        let class = loop {
         println!("Choose {}'s class:", name);
-        println!("1. Fighter, 2. Barbarian, 3. Monk, 4. Wizard, 5. Sorcerer, 6. Cleric");
+        println!("1. Fighter, 2. Barbarian, 3. Monk, 4. Wizard, 5. Sorcerer, 6. Cleric (Pick a number between 1-6)");
         let mut class_input = String::new();
         std::io::stdin().read_line(&mut class_input).expect("Failed to read line");
 
@@ -62,31 +66,23 @@ fn create_character() -> Player {
             }
         }
     };
-    //4. Allocate ability scores
-
-    //4. Allocate ability scores
-    // TODO: Implement ability score allocation
-    let ability_scores = crate::abilities::AbilityScores {
-        strength: 10,
-        dexterity: 10,
-        constitution: 10,
-        intelligence: 10,
-        wisdom: 10,
-        charisma: 10,
-    };
 
     //5. Create character
-    Player {
+    return Player {
         name,
         current_health: 10,
         max_health: 10,
         race,
         class,
-        ability_scores,
-        spell_slots: None,
+        ability_scores: ability_scores,
+        spell_slots: Option<spells::SpellSlots>::None,
     }
 }
 
 fn main() {
-
+    println!("Welcome to DND CLI Game!");
+    println!("Made by Adnan Alam\n");
+    GameState::MainMenu;
+    let player = create_character();
+    println!("\nCharacter Created: {:?}", player.name);
 }

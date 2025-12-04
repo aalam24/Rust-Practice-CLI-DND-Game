@@ -65,4 +65,7 @@ impl Race {
         println!("You chose to increase {} by +2 and {} by +1", plus2, plus1);
         (plus2, plus1)
     }
+    
+    //TODO: Add racial traits and features like Tiefling's fire resistance, Darkvision, etc.
+
 }
