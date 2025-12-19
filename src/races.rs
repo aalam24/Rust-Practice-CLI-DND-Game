@@ -1,5 +1,6 @@
 use crate::abilities::AbilityScores;
 use std::io::{self, Write};
+use std::fmt;
 
 pub enum Race {
     Human,
@@ -8,6 +9,19 @@ pub enum Race {
     Orc,
     Tiefling,
     Gnome
+}
+
+impl fmt::Display for Race {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Race::Human => write!(f, "Human"),
+            Race::Elf => write!(f, "Elf"),
+            Race::Dwarf => write!(f, "Dwarf"),
+            Race::Orc => write!(f, "Orc"),
+            Race::Tiefling => write!(f, "Tiefling"),
+            Race::Gnome => write!(f, "Gnome"),
+        }
+    }
 }
 
 impl Race {

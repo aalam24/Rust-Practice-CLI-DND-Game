@@ -1,4 +1,4 @@
-use cargo::classes::Class;
+use crate::classes::Class;
 
 pub struct SpellSlots {
     pub cantrips : i32,
